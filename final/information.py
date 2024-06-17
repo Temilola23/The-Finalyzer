@@ -1,3 +1,4 @@
+# Define key financial metrics with their explanations
 key_metrics_def = [
     "EPS represents the portion of a company's profit allocated to each outstanding share of common stock. It is a key indicator of a company's profitability. Higher EPS generally indicates a more profitable company.",
     "The P/E ratio is a valuation metric that compares a company's current share price to its per-share earnings. It provides insight into how much investors are willing to pay for a dollar of earnings. A high P/E ratio might indicate that a stock is overvalued, while a low P/E ratio could suggest it is undervalued.",

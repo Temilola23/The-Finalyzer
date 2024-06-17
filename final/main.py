@@ -5,6 +5,7 @@ from yahooquery import Screener
 import locale
 import warnings
 
+# Suppress warnings and set locale for currency formatting
 warnings.filterwarnings('ignore')
 locale.setlocale(locale.LC_ALL, '')
 
@@ -12,6 +13,7 @@ from yahooquery import Ticker
 
 class Stock:
     def __init__(self, ticker_obj, ticker_str):
+        # Initialize Stock object with ticker information
         self.ticker = ticker_obj
         self.tck = ticker_str
         self.rsi_value = None
@@ -33,6 +35,7 @@ class Stock:
         self.history = self.ticker.history(period="1mo")
 
     def get_most_important_info(self):
+        """Returns a dictionary with the most important financial metrics."""
         info = {
             'Earnings Per Share': locale.currency(self.earnings_per_share, grouping=True),
             'Price-to-Earnings Ratio': round(self.price_to_earnings, 2),
@@ -43,6 +46,7 @@ class Stock:
         return info
 
     def get_all_financial_info(self):
+        """Returns a dictionary with all relevant financial information."""
         info = {
             'Name': self.name,
             'Ticker': self.tck,
@@ -62,7 +66,9 @@ class Stock:
         return info
 
     def rsi_index(self, period=15):
+        """Calculates the RSI index for the stock over the specified period."""
         def price_changes(period):
+            """Calculates the average gains and losses over a given period."""
             price_list = self.ticker.history(period=f"{period}d", interval="1d")['close'].tolist()
             n = len(price_list)
 
@@ -97,6 +103,7 @@ class Stock:
         return self.rsi_value
 
     def get_rsi(self, period=15):
+        """Returns the RSI value and investment advice based on the RSI."""
         if self.rsi_value is None:
             self.rsi_index(period)
 
@@ -115,6 +122,7 @@ class Stock:
         return f"The RSI is {self.rsi_value:.2f}. Advice: {advice}"
 
     def get_corporate_events(self, number_of_events):
+        """Returns a list of recent corporate events for the stock."""
         events_df = self.ticker.corporate_events
         events_df = events_df.iloc[::-1]
         events_df.reset_index(inplace=True)
@@ -133,8 +141,8 @@ class Stock:
 
         return events_list
 
-
 def get_tickers_from_screeners(screeners=['most_actives', 'day_gainers', 'day_losers']):
+    """Fetches tickers from the specified screeners."""
     s = Screener()
     all_tickers = set()
     for screener in screeners:
@@ -150,6 +158,7 @@ def get_tickers_from_screeners(screeners=['most_actives', 'day_gainers', 'day_lo
     return all_tickers
 
 def find_ticker():
+    """Prompts the user to select a ticker from the available options."""
     print("Fetching Tickers")
     print("_ " * 25, "\n")
     tickers = get_tickers_from_screeners()
@@ -173,8 +182,8 @@ def find_ticker():
         print("Invalid selection. Please try again.")
         return find_ticker()
 
-
 def runner():
+    """Main function to run the stock analysis tool in CLI mode."""
     try:
         ticker_symbol = find_ticker()
 
@@ -198,10 +207,10 @@ def runner():
                 elif choice == '2':
                     print(stock_obj.get_most_important_info())
                 elif choice == '3':
-                    stock_obj.get_all_financial_info()
+                    print(stock_obj.get_all_financial_info())
                 elif choice == '4':
                     number_of_events = int(input("Enter the number of corporate events to retrieve: "))
-                    stock_obj.get_corporate_events(number_of_events)
+                    print(stock_obj.get_corporate_events(number_of_events))
                 elif choice == '5':
                     print("Exiting the program.")
                     break
@@ -212,4 +221,5 @@ def runner():
     except Exception as e:
         print(f"An error occurred: {e}")
 
+# Uncomment the following line to run the CLI tool
 # runner()

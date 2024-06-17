@@ -12,13 +12,14 @@ app.secret_key = 'your_secret_key'  # Needed for flashing messages
 # In-memory storage for contact form submissions
 contact_submissions = []
 
-# Function to send email
+# Function to send email notifications for contact form submissions
 def send_email(name, email, message):
     try:
         sender_email = "your_email@example.com"
         receiver_email = "temilola@uni.minerva.edu"
         password = "your_email_password"
 
+        # Create email content
         msg = MIMEMultipart()
         msg['From'] = sender_email
         msg['To'] = receiver_email
@@ -27,6 +28,7 @@ def send_email(name, email, message):
         body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
         msg.attach(MIMEText(body, 'plain'))
 
+        # Send email using SMTP server
         server = smtplib.SMTP('smtp.example.com', 587)
         server.starttls()
         server.login(sender_email, password)
@@ -36,33 +38,38 @@ def send_email(name, email, message):
     except Exception as e:
         print(f"Error sending email: {e}")
 
+# Route for the home page
 @app.route('/')
 def home():
     return render_template('index.html')
 
+# Route for the about page
 @app.route('/about')
 def about():
     return render_template('about.html')
 
+# Route for the more page
 @app.route('/more')
 def more():
     return render_template('more.html')
 
+# Route for the contact page
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
 
+# Route for the privacy policy page
 @app.route('/privacy_policy')
 def privacy_policy():
     return render_template('privacy_policy.html')
 
+# Route for selecting a ticker and redirecting to the ticker information page
 @app.route('/select_ticker', methods=['POST'])
 def select_ticker():
     ticker_symbol = request.form['ticker']
     return redirect(url_for('show_ticker_info', ticker=ticker_symbol))
 
-
-
+# Route for displaying ticker information
 @app.route('/ticker/<ticker>')
 def show_ticker_info(ticker):
     stock_input = Ticker(ticker)
@@ -84,6 +91,7 @@ def show_ticker_info(ticker):
     }
     return render_template('ticker_info.html', ticker=ticker, data=data)
 
+# Route for stock analysis
 @app.route('/stock_analysis', methods=['GET', 'POST'])
 def stock_analysis():
     tickers = get_tickers_from_screeners()  # Fetch the list of tickers
@@ -109,6 +117,7 @@ def stock_analysis():
         return render_template('stock_analysis.html', tickers=tickers, data=data)
     return render_template('stock_analysis.html', tickers=tickers)
 
+# Route for handling contact form submissions
 @app.route('/submit_contact', methods=['POST'])
 def submit_contact():
     name = request.form['name']
@@ -128,6 +137,7 @@ def submit_contact():
     flash('Your message has been submitted successfully!', 'success')
     return redirect(url_for('contact'))
 
+# Route for viewing contact submissions
 @app.route('/view_contacts')
 def view_contacts():
     return render_template('view_contacts.html', contacts=contact_submissions)
