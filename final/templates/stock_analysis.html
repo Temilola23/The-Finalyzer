@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Analysis - Stocksense</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+  <header class="text-center py-4">
+    <h1 class="display-4">Stock Analysis</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('more') }}">More</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('stock_analysis') }}">Stock Analysis</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container mt-5">
+    <section class="mb-5">
+      <h2 class="text-center">Welcome to Stocksense Stock Analysis</h2>
+      <p>Welcome to our Stock Analysis page. Here, you can select a stock ticker and perform various analyses to help you make informed investment decisions. You can choose from the following analysis options:</p>
+      <ul>
+        <li><strong>RSI (Relative Strength Index):</strong> The RSI is a momentum oscillator that measures the speed and change of price movements. It ranges from 0 to 100 and is typically used to identify overbought or oversold conditions in a stock.</li>
+        <li><strong>Most Important Info:</strong> This option provides key financial metrics such as earnings per share, price-to-earnings ratio, and market capitalization, giving you a quick overview of the stock's financial health.</li>
+        <li><strong>Financial Info:</strong> Get a comprehensive set of financial data including market cap, debt-to-equity ratio, enterprise value, earnings per share, and more.</li>
+        <li><strong>Corporate Events:</strong> Stay updated with recent corporate events and news related to the selected stock. This can include earnings announcements, mergers, acquisitions, and other significant events.</li>
+      </ul>
+    </section>
+    
+    <form method="post" class="mb-5">
+      <div class="mb-3">
+        <label for="ticker" class="form-label">Select Stock Ticker:</label>
+        <select id="ticker" name="ticker" class="form-select" required>
+          {% for ticker in tickers %}
+            <option value="{{ ticker }}">{{ ticker }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="action" class="form-label">Select Analysis:</label>
+        <select id="action" name="action" class="form-select">
+          <option value="rsi">RSI - Relative Strength Index</option>
+          <option value="important_info">Most Important Info - Key financial metrics</option>
+          <option value="financial_info">Financial Info - Comprehensive financial data</option>
+          <option value="corporate_events">Corporate Events - Recent corporate events</option>
+        </select>
+        <div class="form-text">
+          <span id="rsi-description" style="display:none;">RSI helps identify overbought or oversold conditions in the stock price.</span>
+          <span id="important-info-description" style="display:none;">Provides key financial metrics such as earnings per share, P/E ratio, etc.</span>
+          <span id="financial-info-description" style="display:none;">Detailed financial data including market cap, debt/equity ratio, and more.</span>
+          <span id="corporate-events-description" style="display:none;">Displays recent corporate events and news for the selected stock.</span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="period" class="form-label">Period (for RSI):</label>
+        <input type="number" id="period" name="period" class="form-control" value="15" min="1">
+      </div>
+      <div class="mb-3">
+        <label for="num_events" class="form-label">Number of Corporate Events:</label>
+        <input type="number" id="num_events" name="num_events" class="form-control" value="5" min="1">
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Analyze</button>
+    </form>
+
+    {% if data %}
+    <section class="results">
+      <h2 class="text-center mb-4">Results for {{ data['ticker'] }}</h2>
+      {% if data.get('rsi') %}
+      <div class="alert alert-info">
+        <h3>RSI: {{ data['rsi'] }}</h3>
+      </div>
+      {% endif %}
+      {% if data.get('important_info') %}
+      <div class="card mb-4">
+        <div class="card-header">
+          <h3>Most Important Info</h3>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            {% for key, value in data['important_info'].items() %}
+            <li class="list-group-item"><strong>{{ key }}:</strong> {{ value }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endif %}
+      {% if data.get('financial_info') %}
+      <div class="card mb-4">
+        <div class="card-header">
+          <h3>Financial Info</h3>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            {% for key, value in data['financial_info'].items() %}
+            <li class="list-group-item"><strong>{{ key }}:</strong> {{ value }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endif %}
+      {% if data.get('corporate_events') %}
+      <div class="card mb-4">
+        <div class="card-header">
+          <h3>Corporate Events</h3>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            {% for event in data['corporate_events'] %}
+            <li class="list-group-item">
+              <strong>Date:</strong> {{ event['date'] }} <br>
+              <strong>Topic:</strong> {{ event['topic'] }} <br>
+              <strong>Headline:</strong> {{ event['headline'] }} <br>
+              <strong>Description:</strong> {{ event['description'] }}
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endif %}
+    </section>
+    {% else %}
+    <p class="text-center">No stock selected. Please use the form above to select a stock for analysis.</p>
+    {% endif %}
+  </main>
+
+  <footer class="text-center py-3 bg-dark text-white">
+    <p>&copy; 2024 Stocksense. All rights reserved. | <a href="{{ url_for('privacy_policy') }}" class="text-white">Privacy Policy</a> | <a href="{{ url_for('contact') }}">Contact Us</a></p>
+  </footer>
+
+  <script>
+    document.getElementById('action').addEventListener('change', function () {
+      document.getElementById('rsi-description').style.display = 'none';
+      document.getElementById('important-info-description').style.display = 'none';
+      document.getElementById('financial-info-description').style.display = 'none';
+      document.getElementById('corporate-events-description').style.display = 'none';
+      
+      const selectedOption = this.value;
+      if (selectedOption === 'rsi') {
+        document.getElementById('rsi-description').style.display = 'block';
+      } else if (selectedOption === 'important_info') {
+        document.getElementById('important-info-description').style.display = 'block';
+      } else if (selectedOption === 'financial_info') {
+        document.getElementById('financial-info-description').style.display = 'block';
+      } else if (selectedOption === 'corporate_events') {
+        document.getElementById('corporate-events-description').style.display = 'block';
+      }
+    });
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pDmxO2nmyMxbrc10/tJt2C9niULjFnpms0YaPx7MOqV5I7Dih62DSt8FHZyro9pI" crossorigin="anonymous"></script>
+</body>
+</html>

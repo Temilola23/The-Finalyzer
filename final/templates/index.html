@@ -1,0 +1,164 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Stocksense 📈</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    </head>
+
+    <body>
+      <header class="text-center py-4">
+        <h1 class="display-4">Stocksense 📈</h1>
+        <h3 class="motto"><i>We Make The Moves So You Make the Money</i></h3>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('more') }}">More</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('stock_analysis') }}">Stock Analysis</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <main class="container-fluid mt-5">
+        <form action="/select_ticker" method="post" class="text-center mb-5">
+          <label for="ticker" class="form-label">Enter Stock Ticker:</label>
+          <input type="text" id="ticker" name="ticker" class="form-control" style="display: inline-block; width: auto;" required>
+          <button type="submit" class="btn btn-primary">Analyze</button>
+        </form>
+
+        <marquee class="blink" width="100%" direction="right" height="100%">
+          <b>Apple Inc. 195.28 +1.23% | Microsoft Corp. 330.12 -0.45% | Amazon.com Inc. 132.56 +0.89% | Tesla Inc. 784.55 +2.15% | Alphabet Inc. 140.35 -0.67% | NVIDIA Corp. 425.89 +3.02% | Meta Platforms Inc. 263.78 +0.37% | Berkshire Hathaway Inc. 536,712 +0.24% | Johnson & Johnson 167.45 -0.19% | Procter & Gamble Co. 154.76 +0.58% |</b>
+        </marquee>
+
+
+    <article>
+      <hr>
+      <h2 class="text-center text-decoration-underline mb-4"><b>Why Everybody is Losing Money, and How You Can Make Money In The Midst Of Losses</b></h2>
+      <section class="mb-5">
+        <p>In today's volatile market, many investors are facing significant losses as stock prices tumble. The reasons are multifaceted, ranging from global economic instability to geopolitical tensions and unexpected events. However, with the right strategies, you can turn these losses into opportunities for profit. Here’s how you can navigate these turbulent times and come out on top.</p>
+        <h4><b>The Current Market Situation</b></h4>
+        <p>Over the past few months, the stock market has experienced unprecedented volatility. Economic indicators have been fluctuating, and investor sentiment has turned cautious. Many high-profile companies have seen their stock prices drop sharply, leading to widespread financial losses among individual and institutional investors.</p>
+        <hr>
+        <h4><b>Common Mistakes Investors Make</b></h4>
+        <p>In times of market downturn, certain mistakes are commonly made by investors. Avoiding these pitfalls can help protect your portfolio:</p>
+        <ul>
+          <li><b>Emotional Investing:</b> Letting fear and panic dictate your investment decisions.</li>
+          <li><b>Lack of Diversification:</b> Having a concentrated portfolio that is not well-diversified across sectors and asset classes.</li>
+          <li><b>Chasing Trends:</b> Following market fads without proper research and analysis.</li>
+          <li><b>Ignoring Fundamentals:</b> Overlooking the intrinsic value and financial health of companies.</li>
+        </ul>
+        <hr>
+        <h4><b>Strategies to Profit From Market Downturns</b></h4>
+        <p>While many are losing money, there are several strategies you can employ to benefit from the current market conditions:</p>
+        <ul>
+          <li><b>Short Selling:</b> Borrow shares to sell at a high price and buy them back at a lower price.</li>
+          <li><b>Buying Put Options:</b> Purchase options that allow you to sell stocks at a specific price, profiting from a decline in stock prices.</li>
+          <li><b>Investing in Safe Havens:</b> Allocate funds to assets like gold, bonds, or stable real estate that tend to retain value during market downturns.</li>
+          <li><b>Value Investing:</b> Identify and invest in undervalued stocks with strong fundamentals that are likely to recover over time.</li>
+        </ul>
+        <hr>
+        <h4><b>Top Things Struggling Investors Have in Common</b></h4>
+        <ul>
+          <li>They’re often reactive rather than proactive.</li>
+          <li>They lack a clear investment strategy or plan.</li>
+          <li>They fail to stay informed about market trends and economic indicators.</li>
+        </ul>
+        <hr>
+        <h4 class="text-center"><b>Conclusion</b></h4>
+        <p class="text-center">Market downturns can be daunting, but they also present unique opportunities for those who are prepared. By avoiding common mistakes and employing strategic investment techniques, you can turn potential losses into gains and build a more resilient portfolio. Stay informed, stay calm, and make informed decisions to navigate the turbulent market successfully.</p>
+      </section>
+      <hr>
+      <div class="news mb-5">
+        <h3 class="text-center">Today's Top News Headlines</h3>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col">
+            <div class="card h-100">
+              <iframe width="100%" height="300" style="border:none;" src="https://www.economist.com/finance-and-economics"></iframe>
+              <div class="card-body">
+                <h5 class="card-title">Make More Money Now!</h5>
+                <p class="card-text">Here's your cue to grab the money!!!</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-body-secondary">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <iframe width="100%" height="300" style="border:none;" src="https://www.npr.org/sections/business/"></iframe>
+              <div class="card-body">
+                <h5 class="card-title">The Stocks are UP!</h5>
+                <p class="card-text">Go with it, too!!</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-body-secondary">Last updated just now</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <iframe width="100%" height="300" style="border:none;" src="https://fortune.com/"></iframe>
+              <div class="card-body">
+                <h5 class="card-title">Money Enhancements You Need</h5>
+                <p class="card-text">Find out more now!</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-body-secondary">Last updated just now</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <br><br>
+    <hr>
+    <p class="text-center text-decoration-underline"><big><b>See What the Stocks are Saying Now!</b></big></p>
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <div class="tradingview-widget-copyright">
+        <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+          <span class="blue-text">Track all markets on TradingView</span>
+        </a>
+      </div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+        {
+          "width": "100%",
+          "height": "610",
+          "symbol": "NASDAQ:AAPL",
+          "interval": "D",
+          "timezone": "Etc/UTC",
+          "theme": "dark",
+          "style": "1",
+          "locale": "en",
+          "allow_symbol_change": true,
+          "calendar": false,
+          "support_host": "https://www.tradingview.com"
+        }
+      </script>
+    </div>
+  </main>
+
+  <footer class="text-center py-3 bg-dark text-white">
+    <p>&copy; 2024 Stocksense. All rights reserved. | <a href="{{ url_for('privacy_policy') }}" class="text-white">Privacy Policy</a> | <a href="{{ url_for('contact') }}" class="text-white">Contact Us</a></p>
+  </footer>
+</body>
+
+</html>

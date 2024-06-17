@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Stocksense</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+    .card {
+      height: 100%;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-body > p {
+      margin-bottom: 0.5rem;
+    }
+
+    .card-body > p:last-child {
+      margin-top: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="text-center py-4">
+    <h1 class="display-4">About Us</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('more') }}">More</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('stock_analysis') }}">Stock Analysis</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container mt-5">
+    <section>
+      <h2>Our Mission</h2>
+      <p>At Stocksense, our mission is to empower investors by providing them with the tools and insights they need to make informed decisions. We believe in transparency, education, and leveraging technology to help our users navigate the complex world of investing.</p>
+    </section>
+
+    <section>
+      <h2>Our Team</h2>
+      <div class="row">
+        <div class="col-md-4 text-center mb-4">
+          <div class="card">
+            <img src="/static/images/Temilola.jpg" class="card-img-top" alt="Founder 1">
+            <div class="card-body">
+              <h5 class="card-title">Temilola Olowolayemo</h5>
+              <p><img src="/static/images/minerva2.png" alt="School 1 Logo" style="width: 20px; height: 20px;"> Minerva University</p>
+              <p><strong>Major:</strong> Computational Sciences and Physics</p>
+              <p><strong>Hobbies:</strong> Mindmapping, Coding, Reading</p>
+              <p><strong>Brief Intro:</strong> Temilola is a rising sophomore at Minerva University with a keen interest in ML/AI and quantitative analysis. He is dedicated to mastering SWE technologies to excel in fintech, with a strong commitment to problem-solving and continuous learning.</p>
+              <p><strong>Contribution:</strong> Temilola spearheaded the core development of Stocksense, implementing stock analysis algorithms, integrating the Yahooquery API, and designing the user interface with Flask and Jinja.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+          <div class="card">
+            <img src="/static/images/max_photo.jpeg" class="card-img-top" alt="Founder 2">
+            <div class="card-body">
+              <h5 class="card-title">Max Kainamura</h5>
+              <p><img src="/static/images/harvard.png" alt="School 2 Logo" style="width: 20px; height: 20px;"> Harvard College</p>
+              <p><strong>Major:</strong> Social Studies and Statistics</p>
+              <p><strong>Hobbies:</strong> Photography</p>
+              <p><strong>Brief Intro:</strong> Max is a rising sophomore passionate about financial markets and active investment.</p>
+              <p><strong>Contribution:</strong> Max organized the Yahoo Query API Structure within the Framework of our Backend Functionalities.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+          <div class="card">
+            <img src="/static/images/mofehd.jpg" class="card-img-top" alt="Founder 3">
+            <div class="card-body">
+              <h5 class="card-title">Mofetoluwa Sam-Adelusimo</h5>
+              <p><img src="/static/images/mhlogo.jpg" alt="School 3 Logo" style="width: 20px; height: 20px;"> Morehouse College</p>
+              <p><strong>Major:</strong> Computer Science</p>
+              <p><strong>Hobbies:</strong> Website Development and Watching Sports</p>
+              <p><strong>Brief Intro:</strong> Mofe is a rising sophomore with interests in the growing field of technology, specifically Software Engineering, along with interests in finance.</p>
+              <p><strong>Contribution:</strong> Mofe provided dynamic technical support for the integration of the Yahoo Finance API and creating the user interface of the program.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Our Purpose</h2>
+      <p>This project is a web-based stock analysis tool designed to help users make informed investment decisions. The tool leverages real-time data from Yahoo Finance to provide comprehensive insights into various stocks. Users can select a stock ticker from popular screeners such as most active, day gainers, or day losers.</p>
+      <p>Overall, the tool aims to empower users with accurate and timely stock data, making it easier to evaluate and decide on potential investments.</p>
+    </section>
+
+    <section>
+      <h2>Contact Us</h2>
+      <p>If you have any questions or feedback, feel free to <a href="{{ url_for('contact') }}">contact us</a>.</p>
+    </section>
+  </main>
+
+  <footer class="text-center py-3 bg-dark text-white">
+    <p>&copy; 2024 Stocksense. All rights reserved. | <a href="{{ url_for('privacy_policy') }}" class="text-white">Privacy Policy</a> | <a href="{{ url_for('contact') }}" class="text-white">Contact Us</a></p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pDmxO2nmyMxbrc10/tJt2C9niULjFnpms0YaPx7MOqV5I7Dih62DSt8FHZyro9pI" crossorigin="anonymous"></script>
+</body>
+
+</html>

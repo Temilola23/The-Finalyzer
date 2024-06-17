@@ -1,0 +1,59 @@
+Link to yahooquery info: https://zoo.cs.yale.edu/classes/cs458/lectures/yquery.html 
+
+Project Plan:
+
+Step 1: Python command-line financial data retriever of a stock
+
+Step 2: Python command-line RSI and financial data retriever of a stock
+
+Step 3: Embed the previous python code into HTML webpage
+
+-------------------------
+
+Goals 
+- Learn to integrate yahooquery into python functions 
+- Choose which data points are most important to give user
+- Handle for errors and empty values that may be present
+- Learn how to calculate RSI
+- Build functionality around command line from user instructions/preference
+- Figure out how to embed python into HTML website
+
+Possible Extensions
+- OPENAI API integratrion
+- Something that summarizes the output of financial data
+
+Relevant Financial Data
+
+Basic Information
+1. Stock Ticker: The unique symbol used to identify the stock.
+2. Company Name: Full name of the company.
+3. Industry: Sector and industry classification.
+
+Price Information
+4. Current Price: Latest trading price of the stock.
+5. 52-Week High/Low: Highest and lowest prices in the past year.
+6. Market Capitalization: Total market value of the company's outstanding shares.
+
+Valuation Metrics
+7. Price-to-Earnings (P/E) Ratio: Current share price relative to its per-share earnings.
+8. Enterprise Value (EV): Measure of a company's total value, including debt and excluding cash.
+
+Profitability Metrics
+9. Net Profit Margin: Percentage of revenue that becomes net profit.
+
+Growth Metrics
+10. Earnings Per Share (EPS): Portion of a company's profit allocated to each outstanding share.
+
+Dividend Information
+11. Dividend Yield: Dividend per share divided by the stock price.
+
+Cash Flow
+12. Operating Cash Flow: Cash generated from normal business operations.
+
+Stock Performance
+13. Beta: Measure of a stock's volatility relative to the overall market.
+14. Average Trading Volume: Average number of shares traded per day.
+
+Analyst Opinions
+15. Analyst Ratings: Buy, Hold, or Sell recommendations.
+16. Price Targets: Analyst projections for future stock prices.

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>More About Us - StockSense</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+  <header class="text-center py-4">
+    <h1 class="display-4">More About StockSense</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('more') }}">More</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('stock_analysis') }}">Stock Analysis</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container mt-5">
+    <section>
+      <h2>Our Mission</h2>
+      <p>At StockSense, our mission is to empower investors with the knowledge and tools they need to make informed decisions in the stock market. We believe in the power of data and analysis to provide clear insights and guidance.</p>
+    </section>
+
+    <section>
+      <h2>Our Services</h2>
+      <ul>
+        <li><strong>Stock Analysis:</strong> We offer comprehensive analysis of various stocks to help you understand their performance, trends, and potential.</li>
+        <li><strong>Real-Time Data:</strong> Our platform provides real-time data on stock prices, market trends, and financial news to keep you informed.</li>
+        <li><strong>Investment Advice:</strong> Based on our analysis, we provide actionable investment advice to help you make the best decisions for your portfolio.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Why Choose Us?</h2>
+      <ul>
+        <li><strong>Expert Analysis:</strong> Our team of financial experts and data scientists ensures that you receive the most accurate and insightful analysis.</li>
+        <li><strong>Advanced Tools:</strong> We leverage the latest technology and data analytics tools to provide you with a competitive edge in the stock market.</li>
+        <li><strong>Customer Support:</strong> Our dedicated support team is always here to help you with any questions or issues you may have.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Meet the Team</h2>
+      <p>Our team is composed of seasoned professionals with extensive experience in finance, data science, and software engineering. We are passionate about the stock market and committed to helping our users achieve their investment goals.</p>
+      <ul>
+        <li><strong>Temilola Olowolayemo:</strong> CTO and Founder</li>
+        <li><strong>Max Kainamura:</strong> Chief Economist and Co-Founder</li>
+        <li><strong>Mofetoluwa Sam-Adelusimo:</strong> Chief Operating Officer and Co-Founder</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Contact Us</h2>
+      <p>If you have any questions, feedback, or need support, feel free to <a href="{{ url_for('contact') }}">contact us</a>. We're here to help you succeed in the stock market.</p>
+    </section>
+  </main>
+
+  <footer class="text-center py-3 bg-dark text-white">
+    <p>&copy; 2024 StockSense. All rights reserved. | <a href="{{ url_for('privacy_policy') }}" class="text-white">Privacy Policy</a> | <a href="{{ url_for('contact') }}" class="text-white">Contact Us</a></p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pDmxO2nmyMxbrc10/tJt2C9niULjFnpms0YaPx7MOqV5I7Dih62DSt8FHZyro9pI" crossorigin="anonymous"></script>
+</body>
+</html>

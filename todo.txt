@@ -1,0 +1,10 @@
+- native python prompts for presentation
+- max completes other technical metrics
+- do some testing
+- embed replit in html webpage
+- Importance of thew project
+- What the program does
+- A little about the programmers
+- Do the technical insight page full
+- All the webpages should have the same header and should be dynamic using jinja
+- Make the ticker on the homepage the most up-to-date
