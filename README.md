@@ -1,5 +1,6 @@
 
 # The Finalyzer
+-----------------
 
 ## Comprehensive Financial Analysis Tool
 
